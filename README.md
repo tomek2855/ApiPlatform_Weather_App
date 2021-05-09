@@ -1,5 +1,5 @@
-#Simple Weather Application based on Api Platform
-####How to run backend server
+# Simple Weather Application based on Api Platform
+#### How to run backend server
 - Go to `./backend` folder
 - Rename `.env.example` to `.env`
 - Fill `.env` file with database and OpenWeatherMap credentials
@@ -7,9 +7,9 @@
 - Run `php bin/console doctrine:migrations:migrate`
 - Run `php -S 127.0.0.1:8000 -t public`
 
-To download fresh weather data run `php bin/console app:get-weather`.
+To download fresh weather data run `php bin/console app:get-weather`
 
-####How to run admin panel
+#### How to run admin panel
 - Go to `./admin` folder
 - Run `yarn install`
 - Run `yarn start`
