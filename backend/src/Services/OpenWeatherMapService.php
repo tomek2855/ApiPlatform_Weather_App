@@ -6,9 +6,11 @@ namespace App\Services;
 
 use App\Entity\City;
 use App\Entity\WeatherRecord;
+use App\Exceptions\OpenWeatherMapException;
 use App\Models\OpenWeatherMapGetWeatherDTO;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class OpenWeatherMapService implements GetWeatherInterface
@@ -17,10 +19,15 @@ class OpenWeatherMapService implements GetWeatherInterface
      * @var SerializerInterface
      */
     private $serializer;
+    /**
+     * @var ContainerBagInterface
+     */
+    private $containerBag;
 
-    public function __construct(SerializerInterface $serializer)
+    public function __construct(SerializerInterface $serializer, ContainerBagInterface $containerBag)
     {
         $this->serializer = $serializer;
+        $this->containerBag = $containerBag;
     }
 
     public function getWeather(City $city): WeatherRecord
@@ -33,12 +40,12 @@ class OpenWeatherMapService implements GetWeatherInterface
         }
         catch (GuzzleException $e)
         {
-            throw new \Exception();
+            throw new OpenWeatherMapException($e->getMessage());
         }
 
         if ($response->getStatusCode() !== 200)
         {
-            throw new \Exception();
+            throw new OpenWeatherMapException('Status code is not 200');
         }
 
         /**
@@ -51,7 +58,7 @@ class OpenWeatherMapService implements GetWeatherInterface
 
     private function buildUrl(City $city)
     {
-        $apiKey = 'dd285a5748be29f7cbc6d476cdaa158c';
+        $apiKey = $this->containerBag->get('openweathermap_api_key');
 
         return 'https://api.openweathermap.org/data/2.5/weather?q=' . $city->getName() . '&appid=' . $apiKey;
     }
