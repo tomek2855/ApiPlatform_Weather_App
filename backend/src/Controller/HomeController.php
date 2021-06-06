@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/", name="front")
+     * @Route(path={"/", "/weather/{id}"}, name="front")
      */
     public function index(): Response
     {
