@@ -17,7 +17,7 @@ To download fresh weather data run `php bin/console app:get-weather`
 
 To add city to list go to `http://localhost:3000`
 
-####How to run frontend
+#### How to run frontend
 - Go to `./front` folder
 - Run `yarn install`
 - Run `yarn start`
