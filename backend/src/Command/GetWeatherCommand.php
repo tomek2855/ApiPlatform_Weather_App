@@ -56,7 +56,7 @@ class GetWeatherCommand extends Command
 
         $this->em->flush();
 
-        $io->success('Downloading successed!');
+        $io->success('Download successed!');
 
         return Command::SUCCESS;
     }

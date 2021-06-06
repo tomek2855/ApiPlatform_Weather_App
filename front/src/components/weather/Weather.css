@@ -1,0 +1,31 @@
+.Weather {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+}
+
+.Weather-sidebar {
+    width: 20%;
+}
+
+.Weather-sidebar-Link {
+    color: unset;
+    text-decoration: none;
+}
+
+.Weather-content {
+    width: 80%;
+    padding-left: 2rem;
+}
+
+@media screen and (max-width: 900px) {
+    .Weather-sidebar {
+        width: 100%;
+    }
+
+    .Weather-content {
+        width: 100%;
+        padding-left: 0;
+        padding-top: 2rem;
+    }
+}

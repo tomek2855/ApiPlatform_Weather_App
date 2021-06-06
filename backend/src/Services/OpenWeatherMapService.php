@@ -56,7 +56,7 @@ class OpenWeatherMapService implements GetWeatherInterface
         return $dto->toWeatherRecord($city);
     }
 
-    private function buildUrl(City $city)
+    private function buildUrl(City $city) : string
     {
         $apiKey = $this->containerBag->get('openweathermap_api_key');
 
