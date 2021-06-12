@@ -33,7 +33,7 @@ function WeatherDetails(cityId) {
         setChartData2([[{
             type: 'datetime',
             label: 'Day'
-        }, 'Pressure']].concat(weather.slice(-24).map(item => {
+        }, 'Pressure']].concat(weather.slice(-96).map(item => {
             return [new Date(item.createdAt), item.preesure];
         })));
     }, [weather]);
