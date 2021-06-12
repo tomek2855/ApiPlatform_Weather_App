@@ -26,7 +26,7 @@ function WeatherDetails(cityId) {
         setChartData([[{
             type: 'datetime',
             label: 'Day'
-        }, 'Temperature', 'Humidity']].concat(weather.slice(-24).map(item => {
+        }, 'Temperature', 'Humidity']].concat(weather.slice(-96).map(item => {
             return [new Date(item.createdAt), parseInt(item.temp - 273.15), item.humidity];
         })));
 
