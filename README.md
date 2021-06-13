@@ -1,4 +1,8 @@
 # Simple Weather Application based on Api Platform
+
+### Live app
+http://weather.toadres.pl/
+
 #### How to run backend server
 - Go to `./backend` folder
 - Rename `.env.example` to `.env`
